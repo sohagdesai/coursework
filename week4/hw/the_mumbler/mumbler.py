@@ -69,10 +69,10 @@ def load_dicts (first_char, word, current_host):
     with (open(filename, "rb")) as openfile:
         while True:
             try:
-		dict = {"first": "", "second": "", "count": ""}
+                dict = {"first": "", "second": "", "count": ""}
                 dict = pickle.load(openfile)
-		if dict["first"].lower() == word.lower():
-		    dicts.append(dict)
+                if dict["first"].lower() == word.lower():
+                    dicts.append(dict)
             except EOFError:
                 break
 
@@ -90,9 +90,10 @@ def select_next_word_dict (dicts):
 
     return next_word_dict
 
+
 # Function that executes mumble on the next host.
 def ssh_next_host (word, max_words, next_host):
-    command = "%s/mumble.py %s %d" % (HOMEDIR, word, max_words)
+    command = "%s/mumbler.py %s %d" % (HOMEDIR, word, max_words)
     #print "Command to send: %s" % command
     
     ssh = paramiko.SSHClient()
